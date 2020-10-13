@@ -72,8 +72,8 @@ function onClickOpenModal(evt) {
 }
 function onCloseModalW(evt) {
   backDropModal.classList.remove("is-open");
-  imgOnBackDrop.src = "";
-  imgOnBackDrop.alt = "";
+  imgOnBackDrop.src = ` `;
+  imgOnBackDrop.alt = ` `;
   //   closeModalOfEsc();
 }
 function createImgOnBackDrop(src, alt) {
@@ -85,9 +85,9 @@ function closeModalOnPressEsc(evt) {
 
   if (evt.key !== "Escape") {
     slider(evt, currentIndex);
+
     return;
   }
-
   onCloseModalW();
 }
 
