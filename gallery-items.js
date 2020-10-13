@@ -1,4 +1,6 @@
 import galleryData from "./export.js";
+// const arrey = galleryData[0].original;
+// console.log(galleryData.length);
 // const data = galleryData.forEach((element, inx) => {
 //   console.log(`${element}   ${inx}`);
 // });
@@ -60,8 +62,8 @@ function onGalleryListClick(evt) {
   }
   const pictureElement = evt.target;
   const parentPictureElement = pictureElement.closest(".gallery__link");
-  currentIndex = pictureElement.dataset.index;
-  //   console.log(currentIndex);
+  Number.currentIndex = pictureElement.dataset.index;
+
   onClickOpenModal();
   createImgOnBackDrop(parentPictureElement.href, pictureElement.alt);
 }
@@ -82,26 +84,33 @@ function closeModalOnPressEsc(evt) {
   //   console.log(evt.key);
 
   if (evt.key !== "Escape") {
-    slider(evt);
+    slider(evt, currentIndex);
     return;
   }
 
   onCloseModalW();
 }
 
-function slider(key) {
-  //   if (!backDropModal.classList.add("is-open")) {
-  //     return;
-  //   }
+function slider(key, index) {
   if (key.key === "ArrowRight") {
-    console.log(`нажал вправо`);
-    // currentIndex += 1;
-    // imgOnBackDrop.src = src;
-    // imgOnBackDrop.alt = alt;
+    if (index === galleryData.length) {
+      return;
+    } else {
+      currentIndex += 1;
+      //   console.log(typeof currentIndex);
+      //   console.log(galleryData[`${currentIndex}`].original);
+      imgOnBackDrop.src = galleryData[currentIndex].original;
+
+      imgOnBackDrop.alt = galleryData[currentIndex].description;
+    }
   } else if (key.key === "ArrowLeft") {
-    console.log(`нажал влево`);
-    // currentIndex -= 1;
-    // imgOnBackDrop.src = src;
-    // imgOnBackDrop.alt = alt;
+    if (index === 0) {
+      return;
+    } else {
+      currentIndex = index - 1;
+      //   console.log(galleryData[currentIndex].original);
+      imgOnBackDrop.src = galleryData[currentIndex].original;
+      imgOnBackDrop.alt = galleryData[currentIndex].description;
+    }
   }
 }
