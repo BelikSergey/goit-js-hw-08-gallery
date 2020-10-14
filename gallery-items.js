@@ -61,11 +61,16 @@ function onGalleryListClick(evt) {
     return;
   }
   const pictureElement = evt.target;
-  const parentPictureElement = pictureElement.closest(".gallery__link");
+  // console.log(pictureElement);
   Number.currentIndex = pictureElement.dataset.index;
 
+  const href = pictureElement.dataset.source;
+  // console.log(href);
+  const alt = pictureElement.alt;
+  // console.log(alt);
+  // const parentPictureElement = pictureElement.closest(".gallery__link");
   onClickOpenModal();
-  createImgOnBackDrop(parentPictureElement.href, pictureElement.alt);
+  createImgOnBackDrop(href, alt);
 }
 function onClickOpenModal(evt) {
   backDropModal.classList.add("is-open");
@@ -82,7 +87,6 @@ function createImgOnBackDrop(src, alt) {
 }
 function closeModalOnPressEsc(evt) {
   //   console.log(evt.key);
-
   if (evt.key !== "Escape") {
     slider(evt, currentIndex);
 
