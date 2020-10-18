@@ -97,7 +97,7 @@ function closeModalOnPressEsc(evt) {
 
 function slider(key, index) {
   if (key.key === "ArrowRight") {
-    if (index === galleryData.length) {
+    if (index === galleryData.length-1) {
       return;
     } else {
       currentIndex += 1;
